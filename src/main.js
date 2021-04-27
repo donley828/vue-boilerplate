@@ -1,11 +1,14 @@
-import { createApp } from 'vue'
-import { Button, message } from 'ant-design-vue'
-import App from './App.vue'
-import router from './router'
+import { createApp } from 'vue';
+import App from './App.vue';
+import router from './router';
+import { lazyUse } from './bootstrap';
 
-const app = createApp(App)
+import './theme/index.less'
 
-app.use(router)
+const app = createApp(App);
 
-app.use(Button)
-app.mount('#app')
+app.use(router);
+
+lazyUse(app);
+
+app.mount('#app');

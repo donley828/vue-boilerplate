@@ -1,5 +1,5 @@
 import * as VueRouter from 'vue-router';
-import { BasicLayout } from '@/layouts';
+import { BasicLayout } from '../layouts';
 
 const constantRouterMap = [
   {

@@ -1,12 +1,16 @@
 <template>
-  <div id="app">
+  <a-config-provider :locale="locale">
     <router-view></router-view>
-  </div>
+  </a-config-provider>
 </template>
 
 <script>
+import { zh_CN } from 'ant-design-vue/lib/locale-provider';
 export default {
-  components: {
+  setup() {
+    return {
+      locale: zh_CN
+    }
   }
 }
 
