@@ -1,11 +1,12 @@
-import { createStore } from 'vuex';
+import { InjectionKey } from 'vue';
+import { createStore, Store } from 'vuex';
 
 import app from './modules/app';
 
-const store = createStore({
+export const key: InjectionKey<Store<never>> = Symbol();
+
+export const store = createStore({
   modules: {
     app,
   },
 });
-
-export default store;

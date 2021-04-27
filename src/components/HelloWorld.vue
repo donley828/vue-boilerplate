@@ -2,9 +2,7 @@
   <h1>{{ msg }}</h1>
 
   <p>
-    <a href="https://vitejs.dev/guide/features.html" target="_blank">
-      Vite Documentation
-    </a>
+    <a href="https://vitejs.dev/guide/features.html" target="_blank"> Vite Documentation </a>
     |
     <a href="https://v3.vuejs.org/" target="_blank">Vue 3 Documentation</a>
   </p>
@@ -16,23 +14,21 @@
   </p>
 </template>
 
-<script>
-import { reactive } from 'vue'
+<script lang="ts">
+import { reactive, UnwrapRef } from 'vue';
 
 export default {
   props: {
-    msg: String
+    msg: String,
   },
-  setup() {
-
-    const state = reactive({ count: 0 })
+  setup(): { state: UnwrapRef<{ count: number }> } {
+    const state = reactive({ count: 0 });
 
     return {
       state,
-      msg: 'test'
-    }
-  }
-}
+    };
+  },
+};
 </script>
 
 <style scoped>
