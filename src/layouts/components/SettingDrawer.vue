@@ -2,7 +2,10 @@
   <a-button type="primary" class="btn" @click="showDrawer">
     <template #icon><SettingOutlined /></template>
   </a-button>
-  <a-drawer v-model:visible="visible" placement="right" :closable="false"></a-drawer>
+  <a-drawer v-model:visible="visible" placement="right" :closable="false">
+    <a-divider orientation="left">主题</a-divider>
+    <a-divider orientation="left">布局</a-divider>
+  </a-drawer>
 </template>
 
 <script lang="ts">

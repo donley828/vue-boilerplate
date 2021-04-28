@@ -1,7 +1,8 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
+
 import { BasicLayout } from '../layouts';
 
-const constantRouterMap: RouteRecordRaw[] = [
+const constantRouterMap: Array<RouteRecordRaw> = [
   {
     path: '/',
     component: BasicLayout,

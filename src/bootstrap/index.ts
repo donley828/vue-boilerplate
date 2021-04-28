@@ -1,4 +1,4 @@
-import { Layout, ConfigProvider, Button, Drawer } from 'ant-design-vue';
+import { Layout, ConfigProvider, Button, Drawer, DatePicker, Divider } from 'ant-design-vue';
 import { App } from 'vue';
 
 const lazyUse = (app: App): void => {
@@ -6,6 +6,8 @@ const lazyUse = (app: App): void => {
   app.use(ConfigProvider);
   app.use(Button);
   app.use(Drawer);
+  app.use(DatePicker);
+  app.use(Divider);
 };
 
 export { lazyUse };
