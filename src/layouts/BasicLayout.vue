@@ -1,6 +1,8 @@
 <template>
   <a-layout class="layout">
-    <a-layout-sider collapsible :collapsed-width="48"> sider </a-layout-sider>
+    <a-layout-sider v-if="layout === 'sider'" collapsible :collapsed-width="48">
+      sider
+    </a-layout-sider>
     <a-layout>
       <a-layout-header class="header"></a-layout-header>
       <a-layout-content class="content">
@@ -17,8 +19,8 @@
 
 <script lang="ts">
 import { useStore } from 'vuex';
-import { defineComponent } from 'vue';
-import { key } from '../store';
+import { defineComponent, computed } from 'vue';
+import { key } from '/@/store';
 import SettingDrawer from './components/SettingDrawer.vue';
 
 export default defineComponent({
@@ -26,9 +28,14 @@ export default defineComponent({
   components: {
     SettingDrawer,
   },
-  setup(props) {
+  setup() {
     const store = useStore(key);
-    console.log(store.state.app, props);
+    const theme = computed(() => store.state.app.theme);
+    const layout = computed(() => store.state.app.layout);
+    return {
+      theme,
+      layout,
+    };
   },
 });
 </script>
