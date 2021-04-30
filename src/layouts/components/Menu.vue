@@ -1,5 +1,5 @@
 <template>
-  <a-menu v-model:selectedKeys="selectedKeys" mode="inline" :inline-indent="48">
+  <a-menu v-model:selectedKeys="selectedKeys" :mode="mode" :theme="theme">
     <a-menu-item key="1">
       <pie-chart-outlined />
       <span>Option 1</span>
@@ -19,45 +19,32 @@
       <a-menu-item key="4">Bill</a-menu-item>
       <a-menu-item key="5">Alex</a-menu-item>
     </a-sub-menu>
-    <a-sub-menu key="sub2">
-      <template #title>
-        <span>
-          <team-outlined />
-          <span>Team</span>
-        </span>
-      </template>
-      <a-menu-item key="6">Team 1</a-menu-item>
-      <a-menu-item key="8">Team 2</a-menu-item>
-    </a-sub-menu>
-    <a-menu-item key="9">
-      <file-outlined />
-      <span>File</span>
-    </a-menu-item>
   </a-menu>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
-import {
-  PieChartOutlined,
-  DesktopOutlined,
-  UserOutlined,
-  TeamOutlined,
-  FileOutlined,
-} from '@ant-design/icons-vue';
+import { defineComponent, ref, computed } from 'vue';
+import { useStore } from '/@/store';
+import { PieChartOutlined, DesktopOutlined, UserOutlined } from '@ant-design/icons-vue';
 export default defineComponent({
   name: 'Menu',
   components: {
     PieChartOutlined,
     DesktopOutlined,
     UserOutlined,
-    TeamOutlined,
-    FileOutlined,
   },
   setup() {
     const selectedKeys = ref<string[]>(['1']);
+
+    const store = useStore();
+    const mode = computed((): string => {
+      return store.state.app.layout === 'header' ? 'horizontal' : 'vertical';
+    });
+    const theme = computed((): string => store.state.app.theme);
     return {
       selectedKeys,
+      mode,
+      theme,
     };
   },
 });

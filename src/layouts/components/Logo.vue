@@ -13,7 +13,7 @@ export default defineComponent({
 
 <style scoped>
 .logo {
-  max-width: 200px;
+  width: 200px;
   height: 56px;
   padding: 12px 8px;
 }

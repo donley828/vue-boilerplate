@@ -1,6 +1,11 @@
 {
-  "name": "vue-antd-biolerplate",
+  "name": "vue-antd-boilerplate",
   "version": "0.0.1",
+  "license": "MIT",
+  "repository": {
+    "url": "https://github.com/donley828/vue-biolerplate"
+  },
+  "description": "Vue boilerplate with Vue-Router, Vuex and andv etc.",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -24,7 +29,6 @@
     "less": "^4.1.1",
     "prettier": "^2.2.1",
     "typescript": "^4.2.4",
-    "vite": "^2.2.3",
-    "vite-plugin-imp": "^2.0.7"
+    "vite": "^2.2.3"
   }
 }

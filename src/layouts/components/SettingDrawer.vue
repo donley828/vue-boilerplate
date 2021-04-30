@@ -22,8 +22,7 @@
 </template>
 
 <script lang="ts">
-import { useStore } from 'vuex';
-import { key } from '/@/store';
+import { useStore } from '/@/store';
 import { defineComponent, ref, computed } from 'vue';
 import { SettingOutlined } from '@ant-design/icons-vue';
 
@@ -36,7 +35,7 @@ export default defineComponent({
     const visible = ref<boolean>(false);
     const showDrawer = () => (visible.value = true);
 
-    const store = useStore(key);
+    const store = useStore();
     // app - theme
     const theme = computed((): boolean => store.state.app.theme === 'dark');
     const selectTheme = (checked) => {

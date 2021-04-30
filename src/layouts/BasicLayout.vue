@@ -4,6 +4,7 @@
       v-if="layout === 'sider'"
       v-model:collapsed="collapsed"
       class="sider"
+      :theme="theme"
       collapsible
     >
       <s-logo />
@@ -11,7 +12,7 @@
       sider
     </a-layout-sider>
     <a-layout>
-      <a-layout-header class="header">
+      <a-layout-header class="header" :theme="theme">
         <s-logo v-if="layout === 'header'" />
         <s-menu v-if="layout === 'header'"></s-menu>
       </a-layout-header>
@@ -28,9 +29,8 @@
 </template>
 
 <script lang="ts">
-import { useStore } from 'vuex';
 import { defineComponent, computed, ref } from 'vue';
-import { key } from '/@/store';
+import { useStore } from '/@/store';
 import SettingDrawer from './components/SettingDrawer.vue';
 import SLogo from './components/Logo.vue';
 import SMenu from './components/Menu.vue';
@@ -44,7 +44,7 @@ export default defineComponent({
   },
   setup() {
     const collapsed = ref<boolean>(false);
-    const store = useStore(key);
+    const store = useStore();
     const theme = computed(() => store.state.app.theme);
     const layout = computed(() => store.state.app.layout);
     return {
