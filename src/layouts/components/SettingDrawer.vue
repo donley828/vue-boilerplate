@@ -16,6 +16,8 @@
         <div></div>
       </div>
     </div>
+    <a-divider orientation="left">顶栏颜色</a-divider>
+    <a-divider orientation="left">侧边栏颜色</a-divider>
   </a-drawer>
 </template>
 
