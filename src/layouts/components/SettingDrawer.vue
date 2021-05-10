@@ -23,6 +23,7 @@
 
 <script lang="ts">
 import { useStore } from '/@/store';
+import { updateDarkTheme } from '/@/utils/theme';
 import { defineComponent, ref, computed } from 'vue';
 import { SettingOutlined } from '@ant-design/icons-vue';
 
@@ -39,7 +40,9 @@ export default defineComponent({
     // app - theme
     const theme = computed((): boolean => store.state.app.theme === 'dark');
     const selectTheme = (checked) => {
-      store.dispatch('app/SetTheme', checked ? 'dark' : 'light');
+      const mode = checked ? 'dark' : 'light';
+      store.dispatch('app/SetTheme', mode);
+      updateDarkTheme(mode);
     };
     // app - layout
     const layout = computed((): string => store.state.app.layout);

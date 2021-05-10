@@ -9,7 +9,6 @@
     >
       <s-logo />
       <s-menu></s-menu>
-      sider
     </a-layout-sider>
     <a-layout>
       <a-layout-header class="header" :theme="theme">
