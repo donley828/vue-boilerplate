@@ -3,7 +3,7 @@
     v-model:selectedKeys="selectedKeys"
     :mode="mode"
     :theme="theme"
-    :style="{ lineHeight: '54px' }"
+    :style="{ lineHeight: '56px' }"
   >
     <a-menu-item key="1">
       <pie-chart-outlined />

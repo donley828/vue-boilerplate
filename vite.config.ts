@@ -1,5 +1,6 @@
-import { defineConfig } from 'vite';
+import type { ConfigEnv, UserConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
+import styleImport from 'vite-plugin-style-import';
 
 import {
   viteThemePlugin,
@@ -11,7 +12,7 @@ import {
 import path from 'path';
 import { getThemeColors, generateColors, generateModifyVars } from './config/themeConfig';
 
-function createThemePlugin(isBuild) {
+function createThemePlugin(isBuild: boolean) {
   const colors = generateColors({
     mixDarken,
     mixLighten,
@@ -20,7 +21,7 @@ function createThemePlugin(isBuild) {
 
   const plugin = [
     viteThemePlugin({
-      resolveSelector: (s) => `[data-theme] ${s}`,
+      resolveSelector: (s) => `[data-themes] ${s}`,
       colorVariables: [...getThemeColors(), ...colors],
     }),
     antdDarkThemePlugin({
@@ -40,6 +41,7 @@ function createThemePlugin(isBuild) {
         // 'border-color-base': '#30363d',
         // 'border-color-split': '#30363d',
         'item-active-bg': '#111b26',
+        'app-content-background': 'rgb(255 255 255 / 4%)',
       },
     }),
   ];
@@ -48,25 +50,37 @@ function createThemePlugin(isBuild) {
 }
 
 // https://vitejs.dev/config/
-export default defineConfig({
-  resolve: {
-    alias: [
-      { find: /^\/@\//, replacement: '/src/' },
-      { find: /^~/, replacement: '' },
-    ],
-  },
-  css: {
-    preprocessorOptions: {
-      less: {
-        javascriptEnabled: true,
+export default ({ command, mode }: ConfigEnv): UserConfig => {
+  const isBuild = command === 'build';
+  return {
+    resolve: {
+      alias: [
+        { find: /^\/@\//, replacement: '/src/' },
+        { find: /^~/, replacement: '' },
+      ],
+    },
+    css: {
+      preprocessorOptions: {
+        less: {
+          // modifyVars: generateModifyVars(),
+          javascriptEnabled: true,
+        },
       },
     },
-  },
-  plugins: [
-    vue(),
-    createThemePlugin(),
-    // viteThemePlugin({
-    //   colorVariables: [],
-    // }),
-  ],
-});
+    plugins: [
+      vue(),
+      ...createThemePlugin(isBuild),
+      styleImport({
+        libs: [
+          {
+            libraryName: 'ant-design-vue',
+            esModule: true,
+            resolveStyle: (name) => {
+              return `ant-design-vue/es/${name}/style/index`;
+            },
+          },
+        ],
+      }),
+    ],
+  };
+};

@@ -1,4 +1,4 @@
-@import '~ant-design-vue/dist/antd.less';
+//@import '~ant-design-vue/dist/antd.less';
 
 * {
   margin: 0;
@@ -23,8 +23,11 @@
 }
 
 [data-theme="dark"] {
+  .ant-menu-dark.ant-menu-horizontal {
+    border-bottom: 0;
+  }
   .ant-menu-dark.ant-menu-horizontal > .ant-menu-item,
   .ant-menu-dark.ant-menu-horizontal > .ant-menu-submenu {
-    border-bottom: 0;
+    border-bottom: none!important;
   }
 }
