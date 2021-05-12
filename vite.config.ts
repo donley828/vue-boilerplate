@@ -21,7 +21,7 @@ function createThemePlugin(isBuild: boolean) {
 
   const plugin = [
     viteThemePlugin({
-      resolveSelector: (s) => `[data-themes] ${s}`,
+      resolveSelector: (s) => `${s}`,
       colorVariables: [...getThemeColors(), ...colors],
     }),
     antdDarkThemePlugin({
@@ -32,16 +32,16 @@ function createThemePlugin(isBuild: boolean) {
       filter: (id) => (isBuild ? !id.endsWith('antd.less') : true),
       darkModifyVars: {
         ...generateModifyVars(true),
-        'text-color': '#c9d1d9',
-        'text-color-base': '#c9d1d9',
-        'component-background': '#151515',
-        // black: '#0e1117',
-        // #8b949e
-        'text-color-secondary': '#8b949e',
-        // 'border-color-base': '#30363d',
-        // 'border-color-split': '#30363d',
-        'item-active-bg': '#111b26',
-        'app-content-background': 'rgb(255 255 255 / 4%)',
+        // 'text-color': '#c9d1d9',
+        // 'text-color-base': '#c9d1d9',
+        // 'component-background': '#151515',
+        // // black: '#0e1117',
+        // // #8b949e
+        // 'text-color-secondary': '#8b949e',
+        // // 'border-color-base': '#30363d',
+        // // 'border-color-split': '#30363d',
+        // 'item-active-bg': '#111b26',
+        // 'app-content-background': 'rgb(255 255 255 / 4%)',
       },
     }),
   ];
@@ -62,7 +62,7 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
     css: {
       preprocessorOptions: {
         less: {
-          // modifyVars: generateModifyVars(),
+          modifyVars: generateModifyVars(),
           javascriptEnabled: true,
         },
       },

@@ -12,11 +12,19 @@
         :key="`layout-${idx}`"
         :class="['picker-item', `picker-item-${item}`, { active: item === layout }]"
         @click="() => selectLayout(item)"
-      >
-        <div></div>
-      </div>
+      ></div>
     </div>
     <a-divider orientation="left">主题色</a-divider>
+    <div style="height: 20px">
+      <a-tooltip v-for="(item, index) in colorList" :key="index">
+        <template #title>
+          {{ item.key }}
+        </template>
+        <a-tag :color="item.color" @click="selectThemeColor(item.color)">
+          <CheckOutlined />
+        </a-tag>
+      </a-tooltip>
+    </div>
     <a-divider orientation="left">顶栏颜色</a-divider>
     <a-divider orientation="left">侧边栏颜色</a-divider>
   </a-drawer>
@@ -24,14 +32,15 @@
 
 <script lang="ts">
 import { useStore } from '/@/store';
-import { updateDarkTheme } from '/@/utils/theme';
+import { updateDarkTheme, changeThemeColor } from '/@/utils/theme';
 import { defineComponent, ref, computed } from 'vue';
-import { SettingOutlined } from '@ant-design/icons-vue';
+import { SettingOutlined, CheckOutlined } from '@ant-design/icons-vue';
 
 export default defineComponent({
   name: 'SettingDrawer',
   components: {
     SettingOutlined,
+    CheckOutlined,
   },
   setup() {
     const visible = ref<boolean>(false);
@@ -40,17 +49,35 @@ export default defineComponent({
     const store = useStore();
     // app - theme
     const theme = computed((): boolean => store.state.app.theme === 'dark');
-    const selectTheme = (checked) => {
+    const selectTheme = (checked: boolean) => {
       const mode = checked ? 'dark' : 'light';
       store.dispatch('app/SetTheme', mode);
       updateDarkTheme(mode);
     };
     // app - layout
     const layout = computed((): string => store.state.app.layout);
-    const selectLayout = (val) => {
+    const selectLayout = (val: string) => {
       if (val !== layout.value) {
         store.dispatch('app/SetLayout', val);
       }
+    };
+    // app - themeColor
+    const colorList = [
+      {
+        key: '极客蓝',
+        color: '#2F54EB',
+      },
+      {
+        key: '酱紫',
+        color: '#722ED1',
+      },
+      {
+        key: '庆化蓝',
+        color: '#008CC9',
+      },
+    ];
+    const selectThemeColor = (color: string) => {
+      changeThemeColor(color);
     };
 
     return {
@@ -60,6 +87,8 @@ export default defineComponent({
       selectTheme,
       layout,
       selectLayout,
+      colorList,
+      selectThemeColor,
     };
   },
 });
