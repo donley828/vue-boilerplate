@@ -2,7 +2,7 @@ import { generate } from '@ant-design/colors';
 import { getThemeVariables } from 'ant-design-vue/dist/theme';
 import Path from 'path';
 
-export const primaryColor = '#126547';
+export const primaryColor = '#1890ff';
 export const mode = 'light';
 
 type Fn = (...arg: any) => any;
@@ -66,7 +66,7 @@ export function generateColors({
 }
 
 export function generateModifyVars(dark = false) {
-  const palettes = generateAntColors(primaryColor);
+  const palettes = generate(primaryColor, { theme: dark ? 'dark' : 'default' });
   const primary = palettes[5];
 
   const primaryColorObj: Record<string, string> = {};
@@ -79,18 +79,18 @@ export function generateModifyVars(dark = false) {
 
   return {
     ...modifyVars,
-    // Used for global import to avoid the need to import each style file separately
-    // reference:  Avoid repeated references
+    // // Used for global import to avoid the need to import each style file separately
+    // // reference:  Avoid repeated references
     hack: `${modifyVars.hack} @import (reference) "${Path.resolve('src/theme/index.less')}";`,
     'primary-color': primary,
     ...primaryColorObj,
-    'info-color': primary,
-    'processing-color': primary,
-    'success-color': '#55D187',
-    'error-color': '#ED6F6F',
-    'warning-color': '#EFBD47',
-    'font-size-base': '14px',
-    'border-radius-base': '2px',
-    'link-color': primary,
+    // 'info-color': primary,
+    // 'processing-color': primary,
+    // 'success-color': '#55D187',
+    // 'error-color': '#ED6F6F',
+    // 'warning-color': '#EFBD47',
+    // 'font-size-base': '14px',
+    // 'border-radius-base': '2px',
+    // 'link-color': primary,
   };
 }

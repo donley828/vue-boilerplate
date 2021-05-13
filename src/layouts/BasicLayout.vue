@@ -17,7 +17,9 @@
       </a-layout-header>
       <a-layout-content class="content">
         Content1
+        <a-button type="danger">Test</a-button>
         <a-button type="primary">Test</a-button>
+        <a-button type="link">Test</a-button>
         <a-date-picker></a-date-picker>
       </a-layout-content>
       <a-layout-footer class="footer" style="text-align: center">

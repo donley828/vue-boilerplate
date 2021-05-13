@@ -12,7 +12,7 @@ import {
 } from 'ant-design-vue';
 import type { App } from 'vue';
 
-import { changeThemeColor } from '/@/utils/theme';
+import { changeThemeColor, updateDarkTheme } from '/@/utils/theme';
 
 export const lazyUse = (app: App): void => {
   app.use(Layout);
@@ -29,6 +29,7 @@ export const lazyUse = (app: App): void => {
 
 // bootstrap base settings.
 export const bootstrap = (): void => {
-  changeThemeColor('#126547');
+  updateDarkTheme();
+  // changeThemeColor('#126547');
   console.info('bootstrap: completed');
 };

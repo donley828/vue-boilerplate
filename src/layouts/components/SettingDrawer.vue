@@ -15,7 +15,7 @@
       ></div>
     </div>
     <a-divider orientation="left">主题色</a-divider>
-    <div style="height: 20px">
+    <div v-if="false" style="height: 20px">
       <a-tooltip v-for="(item, index) in colorList" :key="index">
         <template #title>
           {{ item.key }}
