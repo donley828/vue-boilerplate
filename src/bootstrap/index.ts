@@ -9,12 +9,15 @@ import {
   Menu,
   Tooltip,
   Tag,
+  Form,
+  Input,
 } from 'ant-design-vue';
 import type { App } from 'vue';
 
+import { setRouterGuard } from './permissions';
 import { changeThemeColor, updateDarkTheme } from '/@/utils/theme';
 
-export const lazyUse = (app: App): void => {
+export const lazyUse = ({ app }: { app: App }): void => {
   app.use(Layout);
   app.use(ConfigProvider);
   app.use(Button);
@@ -25,11 +28,18 @@ export const lazyUse = (app: App): void => {
   app.use(Menu);
   app.use(Tooltip);
   app.use(Tag);
+  app.use(Form);
+  app.use(Input)
+
+  bootstrap();
 };
 
 // bootstrap base settings.
 export const bootstrap = (): void => {
   updateDarkTheme();
   // changeThemeColor('#126547');
+
+  // load router guard
+  setRouterGuard();
   console.info('bootstrap: completed');
 };

@@ -81,7 +81,7 @@ export function generateModifyVars(dark = false) {
     ...modifyVars,
     // // Used for global import to avoid the need to import each style file separately
     // // reference:  Avoid repeated references
-    hack: `${modifyVars.hack} @import (reference) "${Path.resolve('src/theme/index.less')}";`,
+    hack: `${modifyVars.hack} @import (reference) "${Path.resolve('src/theme/config.less')}";`,
     'primary-color': primary,
     ...primaryColorObj,
     // 'info-color': primary,

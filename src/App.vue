@@ -6,7 +6,6 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { bootstrap } from './bootstrap';
 import zh_CN from 'ant-design-vue/es/locale/zh_CN';
 
 export default defineComponent({
@@ -16,7 +15,6 @@ export default defineComponent({
     };
   },
   created() {
-    bootstrap();
   },
 });
 // This starter template is using Vue 3 experimental <script setup> SFCs

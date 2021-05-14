@@ -1,8 +1,19 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 
-import { BasicLayout } from '../layouts';
+import { BasicLayout, UserLayout } from '../layouts';
 
 const constantRouterMap: Array<RouteRecordRaw> = [
+  {
+    path: '/user',
+    component: UserLayout,
+    redirect: '/user/login',
+    children: [
+      {
+        path: 'login',
+        component: () => import('/@/views/user/Login.vue'),
+      },
+    ],
+  },
   {
     path: '/',
     component: BasicLayout,

@@ -11,6 +11,6 @@ const app = createApp(App);
 app.use(router);
 app.use(store, key);
 
-lazyUse(app);
+lazyUse({ app });
 
 app.mount('#app');
