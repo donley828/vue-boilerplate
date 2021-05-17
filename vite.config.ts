@@ -59,6 +59,14 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
         { find: /^~/, replacement: '' },
       ],
     },
+    server: {
+      proxy: {
+        '/api': {
+          target: 'http://192.168.1.38:81/',
+          changeOrigin: true,
+        },
+      },
+    },
     css: {
       preprocessorOptions: {
         less: {

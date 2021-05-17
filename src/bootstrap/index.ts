@@ -11,6 +11,7 @@ import {
   Tag,
   Form,
   Input,
+  Checkbox
 } from 'ant-design-vue';
 import type { App } from 'vue';
 
@@ -29,7 +30,8 @@ export const lazyUse = ({ app }: { app: App }): void => {
   app.use(Tooltip);
   app.use(Tag);
   app.use(Form);
-  app.use(Input)
+  app.use(Input);
+  app.use(Checkbox);
 
   bootstrap();
 };
