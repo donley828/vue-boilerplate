@@ -32,10 +32,10 @@ export type useAxiosParams = {
   data?: Record<string, string>;
   method: Method;
   headers?: Record<string, string>;
-  manual?: boolean;
+  auto?: boolean;
 };
 export type useAxiosRes = {
-  fetch: Function;
+  fetch: () => void;
   data: Ref;
   error: Ref<boolean>;
   loading: Ref<boolean>;
@@ -47,7 +47,7 @@ const useAxios = ({
   data,
   method,
   headers,
-  manual = false,
+  auto = true,
 }: useAxiosParams): useAxiosRes => {
   const state = reactive({
     data: {},
@@ -73,10 +73,10 @@ const useAxios = ({
     }
     state.loading = false;
   };
-  // onMounted(() => {
-  //   !manual && fetch();
-  // });
-  console.log(state);
+  onMounted(() => {
+    auto && fetch();
+  });
+
   return {
     fetch,
     ...toRefs(state),

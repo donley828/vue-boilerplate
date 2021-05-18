@@ -8,5 +8,6 @@ export function login(params: { username: string; password: string }): useAxiosR
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded',
     },
+    auto: false,
   });
 }

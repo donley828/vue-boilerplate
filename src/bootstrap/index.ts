@@ -11,9 +11,12 @@ import {
   Tag,
   Form,
   Input,
-  Checkbox
+  Checkbox,
+  Calendar,
 } from 'ant-design-vue';
 import type { App } from 'vue';
+import moment from 'moment';
+import 'moment/dist/locale/zh-cn';
 
 import { setRouterGuard } from './permissions';
 import { changeThemeColor, updateDarkTheme } from '/@/utils/theme';
@@ -32,6 +35,7 @@ export const lazyUse = ({ app }: { app: App }): void => {
   app.use(Form);
   app.use(Input);
   app.use(Checkbox);
+  app.use(Calendar);
 
   bootstrap();
 };
@@ -43,5 +47,7 @@ export const bootstrap = (): void => {
 
   // load router guard
   setRouterGuard();
+  // set moment locale
+  moment.locale('zh-cn');
   console.info('bootstrap: completed');
 };

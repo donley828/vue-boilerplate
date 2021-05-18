@@ -1,6 +1,12 @@
-import { Module } from 'Vuex';
+import type { Module } from 'Vuex';
+import type { State as R } from '../index';
 
-const app: Module<any, never> = {
+interface State {
+  theme: 'light' | 'dark';
+  layout: 'header' | 'sider';
+}
+
+const app: Module<State, R> = {
   namespaced: true,
   state: {
     theme: 'light', // light dark

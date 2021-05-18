@@ -2,15 +2,24 @@ import { InjectionKey } from 'vue';
 import { createStore, Store, useStore as baseUseStore } from 'vuex';
 
 import app from './modules/app';
+import user from './modules/user';
 
-export const key: InjectionKey<Store<never>> = Symbol();
+export interface State {
+  name: string;
+}
 
-export const store = createStore({
+export const key: InjectionKey<Store<State>> = Symbol();
+
+export const store = createStore<State>({
+  state: {
+    name: 'vue-boilerplate',
+  },
   modules: {
     app,
+    user,
   },
 });
 
-export function useStore(): Store<never> {
+export function useStore(): Store<State> {
   return baseUseStore(key);
 }

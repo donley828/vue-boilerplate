@@ -35,10 +35,12 @@ import { defineComponent, reactive, toRaw } from 'vue';
 import { useRouter } from 'vue-router';
 import { useForm } from '@ant-design-vue/use';
 import { login } from '/@/api/user';
+import { useStore } from '/@/store';
 
 export default defineComponent({
   name: 'Login',
   setup() {
+    const store = useStore();
     const router = useRouter();
 
     const modelRef = reactive({
@@ -57,6 +59,7 @@ export default defineComponent({
           fetch().then(() => {
             if (data.value.code === 200) {
               router.push({ path: '/' });
+              store.dispatch('user/SetToken', data.value.token);
             }
           });
         })
