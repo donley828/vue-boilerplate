@@ -9,6 +9,7 @@ const constantRouterMap: Array<RouteRecordRaw> = [
     redirect: '/user/login',
     children: [
       {
+        name: 'Login',
         path: 'login',
         component: () => import('/@/views/user/Login.vue'),
       },

@@ -1,7 +1,8 @@
 import axios from 'axios';
 import type { AxiosInstance, AxiosRequestConfig } from 'axios';
-import { toRefs, reactive, onMounted } from 'vue';
-import type { Ref } from 'vue';
+import { toRefs, reactive, onMounted, Ref } from 'vue';
+import { vueLS } from '/@/utils/localStorage';
+import { ACCESS_TOKEN } from '/@/store/enmus';
 
 const service: AxiosInstance = axios.create({
   baseURL: '/api',
@@ -10,7 +11,10 @@ const service: AxiosInstance = axios.create({
 
 service.interceptors.request.use(
   (config: AxiosRequestConfig): AxiosRequestConfig => {
-    // console.log(config);
+    const token = vueLS.get(ACCESS_TOKEN);
+    if (token) {
+      config.headers['Authorization'] = `Bearer ${token}`;
+    }
     return config;
   },
 );
@@ -35,7 +39,7 @@ export type useAxiosParams = {
   auto?: boolean;
 };
 export type useAxiosRes = {
-  fetch: () => void;
+  fetch: () => Promise<void>;
   data: Ref;
   error: Ref<boolean>;
   loading: Ref<boolean>;

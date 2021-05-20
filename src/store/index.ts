@@ -1,5 +1,5 @@
 import { InjectionKey } from 'vue';
-import { createStore, Store, useStore as baseUseStore } from 'vuex';
+import { createStore, Store, useStore as baseUseStore, ModuleTree } from 'vuex';
 
 import app from './modules/app';
 import user from './modules/user';
@@ -10,16 +10,18 @@ export interface State {
 
 export const key: InjectionKey<Store<State>> = Symbol();
 
-export const store = createStore<State>({
+const modules: ModuleTree<State> = {
+  app,
+  user,
+};
+
+export const store = createStore<any>({
   state: {
-    name: 'vue-boilerplate',
+    name: '',
   },
-  modules: {
-    app,
-    user,
-  },
+  modules,
 });
 
 export function useStore(): Store<State> {
-  return baseUseStore(key);
+  return baseUseStore<State>(key);
 }

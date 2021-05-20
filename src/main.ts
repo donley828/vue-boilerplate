@@ -5,11 +5,10 @@ import { store, key } from './store';
 import { lazyUse } from './bootstrap';
 
 import './theme/index.less';
-
 const app = createApp(App);
 
-app.use(router);
 app.use(store, key);
+app.use(router);
 
 lazyUse({ app });
 

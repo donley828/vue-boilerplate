@@ -5,7 +5,7 @@ export type VueLocalStorageOptions = {
   name?: string;
 };
 
-export let useVueLS: VueLocalStorage;
+export let vueLS: VueLocalStorage;
 
 class VueLocalStorage {
   namespace: string;
@@ -13,7 +13,7 @@ class VueLocalStorage {
     const { namespace } = options;
     this.namespace = namespace;
   }
-  set(key: string, value: string, expire = null): void {
+  set(key: string, value: string | boolean, expire: number | null = null): void {
     localStorage.setItem(`${this.namespace}${key}`, JSON.stringify({ value, expire }));
   }
   get(key: string, def = null): null | string {
@@ -47,10 +47,10 @@ class VueLocalStorage {
 export const VueLS = {
   install: (app: App, options: VueLocalStorageOptions): void => {
     const { name = 'ls' } = options;
-    useVueLS = new VueLocalStorage(options);
+    vueLS = new VueLocalStorage(options);
     app.config.globalProperties[name] = {
-      set: useVueLS.set,
-      get: useVueLS.get,
+      set: vueLS.set,
+      get: vueLS.get,
     };
   },
 };

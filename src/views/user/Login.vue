@@ -58,7 +58,7 @@ export default defineComponent({
         .then(() => {
           fetch().then(() => {
             if (data.value.code === 200) {
-              store.dispatch('user/SetToken', data.value.token);
+              store.commit('user/SET_TOKEN', data.value.token);
               router.push({ path: '/' });
             }
           });

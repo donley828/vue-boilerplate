@@ -11,3 +11,11 @@ export function login(params: { username: string; password: string }): useAxiosR
     auto: false,
   });
 }
+
+export function getInfo(): useAxiosRes {
+  return useAxios({
+    url: '/getInfo',
+    method: 'GET',
+    auto: false,
+  });
+}

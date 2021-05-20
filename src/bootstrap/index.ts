@@ -45,13 +45,12 @@ export const lazyUse = ({ app }: { app: App }): void => {
 export const bootstrap = (app: App): void => {
   updateDarkTheme();
   // changeThemeColor('#126547');
-
-  // load router guard
-  setRouterGuard();
   // set moment locale
   moment.locale('zh-cn');
   // add plugin
   app.use(VueLS, { namespace: 'vue-boilerplate_', name: '$ls' });
+  // load router guard
+  setRouterGuard();
 
   console.info('bootstrap: completed');
 };
