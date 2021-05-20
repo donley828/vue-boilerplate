@@ -20,6 +20,7 @@ import 'moment/dist/locale/zh-cn';
 
 import { setRouterGuard } from './permissions';
 import { changeThemeColor, updateDarkTheme } from '/@/utils/theme';
+import { VueLS } from '/@/utils/localStorage';
 
 export const lazyUse = ({ app }: { app: App }): void => {
   app.use(Layout);
@@ -37,11 +38,11 @@ export const lazyUse = ({ app }: { app: App }): void => {
   app.use(Checkbox);
   app.use(Calendar);
 
-  bootstrap();
+  bootstrap(app);
 };
 
 // bootstrap base settings.
-export const bootstrap = (): void => {
+export const bootstrap = (app: App): void => {
   updateDarkTheme();
   // changeThemeColor('#126547');
 
@@ -49,5 +50,8 @@ export const bootstrap = (): void => {
   setRouterGuard();
   // set moment locale
   moment.locale('zh-cn');
+  // add plugin
+  app.use(VueLS, { namespace: 'vue-boilerplate_', name: '$ls' });
+
   console.info('bootstrap: completed');
 };

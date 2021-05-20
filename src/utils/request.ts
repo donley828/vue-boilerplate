@@ -1,6 +1,6 @@
 import axios from 'axios';
 import type { AxiosInstance, AxiosRequestConfig } from 'axios';
-import { isRef, toRefs, reactive, ref, onMounted } from 'vue';
+import { toRefs, reactive, onMounted } from 'vue';
 import type { Ref } from 'vue';
 
 const service: AxiosInstance = axios.create({

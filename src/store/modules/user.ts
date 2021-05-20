@@ -1,5 +1,7 @@
 import type { Module } from 'vuex';
 import type { State as R } from '../index';
+import { useVueLS } from '/@/utils/localStorage';
+import { ACCESS_TOKEN } from '/@/store/enmus';
 
 interface State {
   token: string;
@@ -13,7 +15,7 @@ const user: Module<State, R> = {
   mutations: {
     SET_TOKEN: (state, token) => {
       state.token = token;
-      console.log(token);
+      useVueLS.set(ACCESS_TOKEN, token);
     },
   },
   actions: {
