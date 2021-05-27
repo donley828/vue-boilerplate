@@ -14,6 +14,7 @@
       <a-layout-header class="header" :theme="theme">
         <s-logo v-if="layout === 'header'" />
         <s-menu v-if="layout === 'header'"></s-menu>
+        <user-menu></user-menu>
       </a-layout-header>
       <a-layout-content class="content">
         Content1
@@ -36,6 +37,7 @@ import { useStore } from '/@/store';
 import SettingDrawer from './components/SettingDrawer.vue';
 import SLogo from './components/Logo.vue';
 import SMenu from './components/Menu.vue';
+import UserMenu from './components/UserMenu.vue';
 
 export default defineComponent({
   name: 'BasicLayout',
@@ -43,6 +45,7 @@ export default defineComponent({
     SettingDrawer,
     SLogo,
     SMenu,
+    UserMenu,
   },
   setup() {
     const collapsed = ref<boolean>(false);

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import type { AxiosInstance, AxiosRequestConfig } from 'axios';
+import type { AxiosInstance, AxiosRequestConfig, Method } from 'axios';
 import { toRefs, reactive, onMounted, Ref } from 'vue';
 import { vueLS } from '/@/utils/localStorage';
 import { ACCESS_TOKEN } from '/@/store/enmus';
@@ -19,17 +19,6 @@ service.interceptors.request.use(
   },
 );
 
-type Method =
-  | 'GET'
-  | 'DELETE'
-  | 'HEAD'
-  | 'OPTIONS'
-  | 'POST'
-  | 'PUT'
-  | 'PATCH'
-  | 'PURGE'
-  | 'LINK'
-  | 'UNLINK';
 export type useAxiosParams = {
   url: string;
   params?: Record<string, string>;

@@ -13,6 +13,8 @@ import {
   Input,
   Checkbox,
   Calendar,
+  Avatar,
+  Dropdown,
 } from 'ant-design-vue';
 import type { App } from 'vue';
 import moment from 'moment';
@@ -37,11 +39,13 @@ export const lazyUse = ({ app }: { app: App }): void => {
   app.use(Input);
   app.use(Checkbox);
   app.use(Calendar);
+  app.use(Avatar);
+  app.use(Dropdown);
 
   bootstrap(app);
 };
 
-// bootstrap base settings.
+// core base settings.
 export const bootstrap = (app: App): void => {
   updateDarkTheme();
   // changeThemeColor('#126547');
@@ -52,5 +56,5 @@ export const bootstrap = (app: App): void => {
   // load router guard
   setRouterGuard();
 
-  console.info('bootstrap: completed');
+  console.info('core: completed');
 };

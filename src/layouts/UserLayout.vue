@@ -1,6 +1,6 @@
 <template>
-  <div class="vueb-user-layout">
-    <div class="vueb-user-layout__right">
+  <div :class="layoutPrefixCls">
+    <div :class="`${layoutPrefixCls}__right`">
       <h2>欢迎</h2>
       <router-view></router-view>
       <p>如果你没有账户请<a-button type="link">联系管理员</a-button></p>
@@ -11,8 +11,16 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import { useStyle } from '/@/core/hooks/useStyle';
 export default defineComponent({
   name: 'UserLayout',
+  setup() {
+    const { prefixCls: layoutPrefixCls } = useStyle('user-layout');
+
+    return {
+      layoutPrefixCls,
+    };
+  },
 });
 </script>
 

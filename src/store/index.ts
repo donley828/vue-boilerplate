@@ -17,7 +17,7 @@ const modules: ModuleTree<State> = {
 
 export const store = createStore<any>({
   state: {
-    name: '',
+    name: 'vueb',
   },
   modules,
 });

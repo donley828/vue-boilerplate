@@ -1,5 +1,5 @@
 <template>
-  <div class="vueb-user-login">
+  <div :class="loginPrefixCls">
     <a-form
       layout="vertical"
       :label-col="{ span: 4 }"
@@ -36,6 +36,7 @@ import { useRouter } from 'vue-router';
 import { useForm } from '@ant-design-vue/use';
 import { login } from '/@/api/user';
 import { useStore } from '/@/store';
+import { useStyle } from '/@/core/hooks/useStyle';
 
 export default defineComponent({
   name: 'Login',
@@ -68,6 +69,8 @@ export default defineComponent({
         });
     };
 
+    const { prefixCls: loginPrefixCls } = useStyle('login');
+
     return {
       validate,
       validateInfos,
@@ -75,6 +78,7 @@ export default defineComponent({
       rulesRef,
       onSubmit,
       loading,
+      loginPrefixCls,
     };
   },
 });

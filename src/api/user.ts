@@ -12,6 +12,14 @@ export function login(params: { username: string; password: string }): useAxiosR
   });
 }
 
+export function logout(): useAxiosRes {
+  return useAxios({
+    url: '/logout',
+    method: 'POST',
+    auto: false,
+  });
+}
+
 export function getInfo(): useAxiosRes {
   return useAxios({
     url: '/getInfo',
