@@ -3,12 +3,14 @@ import type { State as R } from '../index';
 import { vueLS } from '/@/utils/localStorage';
 import { ACCESS_TOKEN } from '/@/store/enmus';
 import { getInfo, logout } from '/@/api/user';
+import type { RouteRecordRaw } from 'vue-router';
 
 interface State {
   token: string;
   roles: string[];
   info: Record<string, any>;
   name: string;
+  routes: RouteRecordRaw | null;
 }
 
 const user: Module<State, R> = {
@@ -18,6 +20,8 @@ const user: Module<State, R> = {
     roles: [],
     info: {},
     name: '',
+
+    routes: null,
   },
   mutations: {
     SET_TOKEN: (state, token) => {
@@ -32,6 +36,10 @@ const user: Module<State, R> = {
     },
     SET_NAME: (state, name) => {
       state.name = name;
+    },
+
+    SET_ROUTES: (state, routes) => {
+      state.routes = routes;
     },
   },
   actions: {

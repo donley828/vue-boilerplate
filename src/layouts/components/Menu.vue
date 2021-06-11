@@ -46,10 +46,13 @@ export default defineComponent({
       return store.state.app.layout === 'header' ? 'horizontal' : 'vertical';
     });
     const theme = computed((): string => store.state.app.theme);
+    const routes = computed(() => store.state.user.routes);
+    console.log(routes.value);
     return {
       selectedKeys,
       mode,
       theme,
+      routes,
     };
   },
 });

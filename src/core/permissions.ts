@@ -1,4 +1,4 @@
-import router from '/@/router';
+import router, { dynamicBasicRouter } from '/@/router';
 import type { RouteLocationNormalized, NavigationGuardNext } from 'vue-router';
 import { vueLS } from '/@/utils/localStorage';
 import { ACCESS_TOKEN } from '/@/store/enmus';
@@ -16,10 +16,23 @@ export const setRouterGuard = (): void => {
         } else {
           if (store.state.user.roles.length === 0) {
             store.dispatch('user/GetInfo').then((res) => {
-              console.log(res);
+              const {
+                value: { roles },
+              } = res;
+              let tmp = dynamicBasicRouter;
+              tmp = {
+                ...dynamicBasicRouter,
+                redirect: dynamicBasicRouter.children
+                  ? '/' + dynamicBasicRouter.children[0].path
+                  : '/',
+              };
+              router.addRoute(tmp);
+              store.commit('user/SET_ROUTES', tmp.children);
+              next({ ...to, replace: true });
             });
+          } else {
+            next();
           }
-          next();
         }
       } else {
         if (whiteRouteList.includes(<string>to.name)) {

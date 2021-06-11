@@ -69,7 +69,7 @@ export default defineComponent({
         });
     };
 
-    const { prefixCls: loginPrefixCls } = useStyle('login');
+    const { prefixCls: loginPrefixCls } = useStyle('user-login');
 
     return {
       validate,
