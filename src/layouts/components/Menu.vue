@@ -5,38 +5,31 @@
     :theme="theme"
     :style="{ lineHeight: '56px' }"
   >
-    <a-menu-item key="1">
-      <pie-chart-outlined />
-      <span>Option 1</span>
-    </a-menu-item>
-    <a-menu-item key="2">
-      <desktop-outlined />
-      <span>Option 2</span>
-    </a-menu-item>
-    <a-sub-menu key="sub1">
-      <template #title>
-        <span>
-          <user-outlined />
-          <span>User</span>
-        </span>
+    <template v-for="item in routes" :key="item.name">
+      <template v-if="!item.children">
+        <a-menu-item :key="item.name">
+          <span>{{ item.meta.title }}</span>
+        </a-menu-item>
       </template>
-      <a-menu-item key="3">Tom</a-menu-item>
-      <a-menu-item key="4">Bill</a-menu-item>
-      <a-menu-item key="5">Alex</a-menu-item>
-    </a-sub-menu>
+      <template v-else>
+        <sub-menu :key="item.name" :menu-info="item"></sub-menu>
+      </template>
+    </template>
   </a-menu>
 </template>
 
 <script lang="ts">
 import { defineComponent, ref, computed } from 'vue';
 import { useStore } from '/@/store';
-import { PieChartOutlined, DesktopOutlined, UserOutlined } from '@ant-design/icons-vue';
+import SubMenu from './SubMenu.vue';
+
 export default defineComponent({
   name: 'Menu',
   components: {
-    PieChartOutlined,
-    DesktopOutlined,
-    UserOutlined,
+    SubMenu,
+    // PieChartOutlined,
+    // DesktopOutlined,
+    // UserOutlined,
   },
   setup() {
     const selectedKeys = ref<string[]>(['1']);
