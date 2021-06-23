@@ -4,6 +4,7 @@
     :mode="mode"
     :theme="theme"
     :style="{ lineHeight: '56px' }"
+    @select="handleSelect"
   >
     <template v-for="item in routes" :key="item.name">
       <template v-if="!item.children">
@@ -21,6 +22,7 @@
 
 <script lang="ts">
 import { defineComponent, ref, computed } from 'vue';
+import { useRouter } from 'vue-router';
 import { useStore } from '/@/store';
 import SubMenu from './SubMenu.vue';
 import IconFont from '/@/components/IconFont.vue';
@@ -32,20 +34,25 @@ export default defineComponent({
     IconFont,
   },
   setup() {
-    const selectedKeys = ref<string[]>(['1']);
-
     const store = useStore();
     const mode = computed((): string => {
       return store.state.app.layout === 'header' ? 'horizontal' : 'vertical';
     });
     const theme = computed((): string => store.state.app.theme);
+
+    const router = useRouter();
+    const selectedKeys = ref<string[]>([router.currentRoute.value.name]);
     const routes = computed(() => store.state.user.routes);
-    console.log(routes.value);
+    const handleSelect = (e) => {
+      router.push({ name: e.key });
+    };
     return {
-      selectedKeys,
       mode,
       theme,
+
+      selectedKeys,
       routes,
+      handleSelect,
     };
   },
 });

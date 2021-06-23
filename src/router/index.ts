@@ -1,6 +1,6 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 
-import { BasicLayout, UserLayout } from '../layouts';
+import { BasicLayout, UserLayout, RouteView } from '../layouts';
 
 const constantRouterMap: Array<RouteRecordRaw> = [
   {
@@ -33,22 +33,22 @@ export const dynamicBasicRouter: RouteRecordRaw = {
     {
       name: 'List',
       path: 'list',
-      redirect: '',
-      meta: {
-        title: '列表',
-        icon: 'icon-unorderedlist',
-      },
+      component: RouteView,
       children: [
         {
           name: 'ListSearch',
           path: 'search',
           component: () => import('/@/views/list/search/index.vue'),
           meta: {
-            icon: 'sss',
-            title: 'icon-search',
+            icon: 'icon-search',
+            title: '列表搜索',
           },
         },
       ],
+      meta: {
+        title: '列表',
+        icon: 'icon-unorderedlist',
+      },
     },
   ],
 };

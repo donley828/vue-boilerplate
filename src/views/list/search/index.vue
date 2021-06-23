@@ -1,4 +1,4 @@
-<template></template>
+<template>search</template>
 
 <script>
 export default {
