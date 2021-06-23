@@ -8,6 +8,7 @@
     <template v-for="item in routes" :key="item.name">
       <template v-if="!item.children">
         <a-menu-item :key="item.name">
+          <icon-font :type="item.meta.icon"></icon-font>
           <span>{{ item.meta.title }}</span>
         </a-menu-item>
       </template>
@@ -22,14 +23,13 @@
 import { defineComponent, ref, computed } from 'vue';
 import { useStore } from '/@/store';
 import SubMenu from './SubMenu.vue';
+import IconFont from '/@/components/IconFont.vue';
 
 export default defineComponent({
   name: 'Menu',
   components: {
     SubMenu,
-    // PieChartOutlined,
-    // DesktopOutlined,
-    // UserOutlined,
+    IconFont,
   },
   setup() {
     const selectedKeys = ref<string[]>(['1']);

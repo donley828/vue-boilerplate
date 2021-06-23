@@ -26,7 +26,7 @@ export const dynamicBasicRouter: RouteRecordRaw = {
       path: 'dashboard',
       component: () => import('/@/views/dashboard/index.vue'),
       meta: {
-        icon: 'sss',
+        icon: 'icon-home',
         title: '首页',
       },
     },
@@ -36,7 +36,7 @@ export const dynamicBasicRouter: RouteRecordRaw = {
       redirect: '',
       meta: {
         title: '列表',
-        icon: 'sss',
+        icon: 'icon-unorderedlist',
       },
       children: [
         {
@@ -45,7 +45,7 @@ export const dynamicBasicRouter: RouteRecordRaw = {
           component: () => import('/@/views/list/search/index.vue'),
           meta: {
             icon: 'sss',
-            title: '搜索列表',
+            title: 'icon-search',
           },
         },
       ],
