@@ -17,14 +17,9 @@
         <user-menu></user-menu>
       </a-layout-header>
       <a-layout-content class="content">
-        <a-button type="danger">Test</a-button>
-        <a-button type="primary">Test</a-button>
-        <a-button type="link">Test</a-button>
         <router-view></router-view>
       </a-layout-content>
-      <a-layout-footer class="footer" style="text-align: center">
-        Ant Design ©2018 Created by Ant UED
-      </a-layout-footer>
+      <a-layout-footer class="footer" style="text-align: center"> vue-boilerplate </a-layout-footer>
     </a-layout>
   </a-layout>
   <setting-drawer></setting-drawer>

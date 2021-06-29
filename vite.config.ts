@@ -62,7 +62,7 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
     server: {
       proxy: {
         '/api': {
-          target: 'http://192.168.1.38:81/',
+          target: 'http://rap2api.taobao.org/app/mock/286147/',
           changeOrigin: true,
         },
       },

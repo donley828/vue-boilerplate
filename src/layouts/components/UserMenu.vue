@@ -1,10 +1,9 @@
 <template>
   <a-dropdown :trigger="['click']">
-    <div>
+    <div class="avatar">
       <span>{{ username }}</span>
       <DownOutlined />
     </div>
-    <!--    <a-avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />-->
 
     <template #overlay>
       <a-menu>
@@ -57,4 +56,8 @@ export default defineComponent({
 });
 </script>
 
-<style scoped></style>
+<style scoped lang="less">
+.avatar {
+  color: @white;
+}
+</style>
