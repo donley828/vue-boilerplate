@@ -3,6 +3,8 @@ Vue boilerplate with Vue-Router, Vuex and andv etc.
 
 ## live-demo
 
+[demo](http://donglei.site/vue-boilerplate)
+
 ## Set-up
 
 ### install dependencies
