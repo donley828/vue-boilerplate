@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "license": "MIT",
   "repository": {
-    "url": "https://github.com/donley828/vue-biolerplate"
+    "url": "https://github.com/donley828/vue-boilerplate"
   },
   "homepage": "https://donley828.github.io/vue-boilerplate",
   "description": "Vue boilerplate with Vue-Router, Vuex and andv etc.",
