@@ -5,6 +5,7 @@
   "repository": {
     "url": "https://github.com/donley828/vue-biolerplate"
   },
+  "homepage": "https://donley828.github.io/vue-boilerplate",
   "description": "Vue boilerplate with Vue-Router, Vuex and andv etc.",
   "scripts": {
     "dev": "vite",
