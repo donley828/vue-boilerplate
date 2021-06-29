@@ -53,7 +53,7 @@ function createThemePlugin(isBuild: boolean) {
 export default ({ command, mode }: ConfigEnv): UserConfig => {
   const isBuild = command === 'build';
   return {
-    base: '/vue-boilerplate',
+    base: '/vue-boilerplate/',
     resolve: {
       alias: [
         { find: /^\/@\//, replacement: '/src/' },
