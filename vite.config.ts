@@ -60,14 +60,14 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
         { find: /^~/, replacement: '' },
       ],
     },
-    server: {
-      proxy: {
-        '/api': {
-          target: 'http://rap2api.taobao.org/app/mock/286147/',
-          changeOrigin: true,
-        },
-      },
-    },
+    // server: {
+    //   proxy: {
+    //     '/api': {
+    //       target: 'http://rap2api.taobao.org/app/mock/286147/',
+    //       changeOrigin: true,
+    //     },
+    //   },
+    // },
     css: {
       preprocessorOptions: {
         less: {

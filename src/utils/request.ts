@@ -5,8 +5,7 @@ import { vueLS } from '/@/utils/localStorage';
 import { ACCESS_TOKEN } from '/@/store/enmus';
 
 const service: AxiosInstance = axios.create({
-  baseURL: '/api',
-  url: 'http://rap2api.taobao.org/app/mock/286147/api',
+  baseURL: 'http://rap2api.taobao.org/app/mock/286147/api/',
   timeout: 1000,
 });
 
